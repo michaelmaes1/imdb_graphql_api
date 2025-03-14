@@ -1,0 +1,42 @@
+version: "3.8"
+
+networks:
+  app_network:  # Define a shared network
+    driver: bridge
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    container_name: imdb_graphql_app
+    command: sleep infinity
+    volumes:
+      - .:/workspace
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/imdb_db"
+    networks:
+      - app_network  # Connects to the shared network
+
+  db:
+    image: postgres:15
+    container_name: imdb_pg
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: imdb_db
+    ports:
+      - "6432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app_network  # Connects to the shared network
+
+volumes:
+  pgdata:
+

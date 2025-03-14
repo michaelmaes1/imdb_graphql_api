@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  year: 1
+  runtime_minutes: 1
+  rating: 1.5
+  votes: 1
+  revenue_millions: 1.5
+  metascore: 1.5
+  director: one
+
+two:
+  title: MyString
+  description: MyText
+  year: 1
+  runtime_minutes: 1
+  rating: 1.5
+  votes: 1
+  revenue_millions: 1.5
+  metascore: 1.5
+  director: two

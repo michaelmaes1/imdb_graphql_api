@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+echo "Installing dependencies..."
+bundle install
+#yarnpkg install
+
+echo "Setting up the database..."
+rails db:drop db:create db:migrate db:seed
+
+echo "Setup complete! You can now run the Rails server with 'rails s -b 0.0.0.0 -p 3002'"
+
+rails s -b 0.0.0.0 -p 3002 

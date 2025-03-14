@@ -1,0 +1,13 @@
+{
+  "name": "Rails GraphQL API",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "extensions": [
+    "rebornix.ruby",
+    "graphql.vscode-graphql",
+    "ms-vscode-remote.remote-containers"
+  ],
+  "postCreateCommand": "bin/setup_dev"
+}
+
