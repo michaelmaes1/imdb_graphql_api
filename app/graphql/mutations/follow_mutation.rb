@@ -20,6 +20,9 @@ module Mutations
       # Create a follow record
       Follow.find_or_create_by(followable: followable)
 
+      # 🔥 Broadcast the subscription event
+      ImdbGraphqlApiSchema.subscriptions.trigger(:followed, {}, followable)
+      
       Rails.logger.error followable
       followable
     end
