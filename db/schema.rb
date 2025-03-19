@@ -26,6 +26,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_153756) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.string "followable_type", null: false
+    t.bigint "followable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

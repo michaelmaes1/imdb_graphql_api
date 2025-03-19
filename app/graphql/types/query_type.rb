@@ -21,5 +21,10 @@ module Types
       argument :sort_order, String, required: false, default_value: "asc"
     end
 
+    field :followed, [Types::FollowUnionType], null:false, description: "List of followed items"
+
+    def followed
+      Follow.all.map(&:followable)
+    end
   end
 end
